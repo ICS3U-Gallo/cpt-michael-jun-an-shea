@@ -1,5 +1,3 @@
-# cpt-michael-jun-an-shea
-cpt-michael-jun-an-shea created by GitHub Classroom
 
 import arcade
 WIDTH = 719
@@ -7,30 +5,30 @@ HEIGHT = 982
 button1 = [314, 327, 50, 30]
 button2 = [290, 431, 20, 20]
 dictionary = {
-    "con_table": [387, 488, 106, 655],
-    "precook_table": [387, 326, 111, 489],
-    "cup_tray": [508, 260, 33, 294],
-    "long_table": [172, 237, 336, 324],
-    "table_sticking_out_of_long_table": [175, 223, 123, 237],
-    "sink": [123, 295, 42, 321],
-    "ice_cream_machine": [29, 255, 91, 324],
-    "ice_despenser": [55, 235, 39, 255],
-    "ice_condiments": [0, 211, 23, 256],
-    "bottom_left_wall": [0, 0, 212, 838],
-    "cashier_table": [212, 21, 506, 108],
-    "box1": [18, 365, 53, 448],
-    "box2": [77, 370, 54, 448],
-    "box3": [135, 359, 83, 448],
-    "box4": [225, 368, 89, 451],
-    "box5": [258, 457, 89, 540],
-    "long_wall": [0, 326, 385, 354],
-    "long_wall2": [355, 357, 30, 885],
-    "wall_pole": [354, 886, 33, 918],
-    "egg_machine": [612, 643, 106, 706],
-    "grill": [600, 342, 118, 460],
-    "deep_fryer": [620, 346, 98, 521],
-    "papa_frita": [616, 252, 102, 345],
-    "papas _fritas_crudas": [613, 174, 105, 251],
+    "con_table": [387, 488, 106, 167],
+    "precook_table": [387, 326, 111, 163],
+    "cup_tray": [508, 260, 33, 34],
+    "long_table": [172, 237, 336, 87],
+    "table_sticking_out_of_long_table": [175, 223, 123, 14],
+    "sink": [123, 295, 42, 26],
+    "ice_cream_machine": [29, 255, 91, 69],
+    "ice_despenser": [55, 235, 39, 20],
+    "ice_condiments": [0, 211, 23, 45],
+    "bottom_left_wall": [0, 0, 212, 212],
+    "cashier_table": [212, 21, 506, 87],
+    "box1": [18, 365, 53, 83],
+    "box2": [77, 370, 54, 78],
+    "box3": [135, 359, 83, 89],
+    "box4": [225, 368, 89, 83],
+    "box5": [258, 457, 89, 83],
+    "long_wall": [0, 326, 385, 28],
+    "long_wall2": [355, 357, 30, 528],
+    "wall_pole": [354, 886, 33, 32],
+    "egg_machine": [612, 643, 106, 63],
+    "grill": [600, 342, 118, 118],
+    "deep_fryer": [620, 346, 98, 175],
+    "papa_frita": [616, 252, 102, 93],
+    "papa_fritas_crudas": [613, 174, 105, 77],
 }
 current_screen = "menu"
 #player_location = player_x and player_y
@@ -43,16 +41,29 @@ right_pressed = False
 left_pressed = False
 
 def update(delta_time):
+    previous_x_input = None
+    previous_y_input = None
+
     global player_y, player_x
     if up_pressed:
      player_y += 2.45
+     previous_y_input = 2.45
+
     elif down_pressed:
      player_y -= 2.45
+     previous_y_input = -2.45
 
     if right_pressed:
      player_x += 2.45
+     previous_x_input = 2.45
     elif left_pressed:
      player_x -= 2.45
+     previous_x_input = -2.45
+
+    if collision():
+        player_x -= previous_x_input
+        player_y -= previous_y_input
+
 
 def on_draw():
     arcade.start_render()
@@ -134,7 +145,7 @@ def setup():
 
 
 def draw_menu():
-    image = arcade.load_texture("C:/Users/micha/Downloads/computersciencelogo.png")
+    image = arcade.load_texture("/home/robuntu/shea/classwork/computersciencelogo.png")
     arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
     arcade.draw_text("Play", WIDTH/2-45, HEIGHT/3,
                   arcade.color.WHITE_SMOKE, font_size=35)
@@ -149,7 +160,7 @@ def draw_instructions():
 
 
 def draw_play():
-    image = arcade.load_texture("C:/Users/micha/Downloads/computerscience2.png")
+    image = arcade.load_texture("/home/robuntu/shea/classwork/computerscience (2).png")
     arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
     arcade.draw_circle_filled(player_x, player_y, 25, arcade.color.BLUE)
     collision()
@@ -159,19 +170,54 @@ def draw_Mcdonaldsecretrecipe():
 
 def collision():
     for obst in dictionary:
-        if player_x <= 0 or player_x >= 719 or player_y <= 0 or player_y >= 982:
-            print("wall")
-        elif player_x >= 387 and player_x <= 493 and player_y >= 488 and player_y <= 655:
+        if player_x >= dictionary["con_table"][0] and player_x <= dictionary["con_table"][0] + dictionary["con_table"][2] and player_y >= dictionary["con_table"][1] and player_y <= dictionary["con_table"][3] + dictionary["con_table"][1]:
             print("con_table")
-        elif player_x >= 387 and player_x <= 498 and player_y >= 326 and player_y <= 489:
-            print("precook_table")
-        elif player_x >= 508 and player_x <= 541 and player_y >= 260 and player_y <= 294:
+        if player_x >= dictionary["cup_tray"][0] and player_x <= dictionary["cup_tray"][0] + dictionary["cup_tray"][2] and player_y >= dictionary["cup_tray"][1] and player_y <= dictionary["cup_tray"][3] + dictionary["cup_tray"][1]:
             print("cup_tray")
-        elif player_x >= 172 and player_x <= 508 and player_y >= 237 and player_y <= 324:
+        if player_x >= dictionary["precook_table"][0] and player_x <= dictionary["precook_table"][0] + dictionary["precook_table"][2] and player_y >= dictionary["precook_table"][1] and player_y <= 489:
+            print("precook_table")
+        if player_x >= dictionary["long_table"][0] and player_x <= dictionary["long_table"][0] + dictionary["long_table"][2] and player_y >= dictionary["long_table"][1] and player_y <= dictionary["long_table"][3] + dictionary["long_table"][1]:
             print("long_table")
-        elif player_x >= 175 and player_x <= 298 and player_y >= 223 and player_y <= 237:
-            print("table_sticking_out_of_long_table")
+        if player_x >= dictionary["table_sticking_out_of_long_table"][0] and player_x <= dictionary["table_sticking_out_of_long_table"][0] + dictionary["table_sticking_out_of_long_table"][2] and player_y >= dictionary["table_sticking_out_of_long_table"][1] and player_y <= dictionary["table_sticking_out_of_long_table"][3] + dictionary["table_sticking_out_of_long_table"][1]:
+            print("table_stick_out_of_long_table")
+        if player_x >= dictionary["sink"][0] and player_x <= dictionary["sink"][0] + dictionary["sink"][2] and player_y >= dictionary["sink"][1] and player_y <= dictionary["sink"][3] + dictionary["sink"][1]:
+            print("sink")
+        if player_x >= dictionary["ice_cream_machine"][0] and player_x <= dictionary["ice_cream_machine"][0] + dictionary["ice_cream_machine"][2] and player_y >= dictionary["ice_cream_machine"][1] and player_y <= dictionary["ice_cream_machine"][3] + dictionary["ice_cream_machine"][1]:
+            print("ice_cream_machine")
+        if player_x >= dictionary["ice_despenser"][0] and player_x <= dictionary["ice_despenser"][0] + dictionary["ice_despenser"][2] and player_y >= dictionary["ice_despenser"][1] and player_y <= dictionary["ice_despenser"][3] + dictionary["ice_despenser"][1]:
+            print("ice_despenser")
+        if player_x >= dictionary["ice_condiments"][0] and player_x <= dictionary["ice_condiments"][0] + dictionary["ice_condiments"][2] and player_y >= dictionary["ice_condiments"][1] and player_y <= dictionary["ice_condiments"][3] + dictionary["ice_condiments"][1]:
+            print("ice_condiments")
+        if player_x >= dictionary["bottom_left_wall"][0] and player_x <= dictionary["bottom_left_wall"][0] + dictionary["bottom_left_wall"][2] and player_y >= dictionary["bottom_left_wall"][1] and player_y <= dictionary["bottom_left_wall"][3] + dictionary["bottom_left_wall"][1]:
+            print("bottom_left_wall")
+        if player_x >= dictionary["cashier_table"][0] and player_x <= dictionary["cashier_table"][0] + dictionary["cashier_table"][2] and player_y >= dictionary["cashier_table"][1] and player_y <= dictionary["cashier_table"][3] + dictionary["cashier_table"][1]:
+            print("cashier_table")
+        if player_x >= dictionary["box1"][0] and player_x <= dictionary["box1"][0] + dictionary["box1"][2] and player_y >= dictionary["box1"][1] and player_y <= dictionary["box1"][3] + dictionary["box1"][1]:
+            print("box1")
+        if player_x >= dictionary["box2"][0] and player_x <= dictionary["box2"][0] + dictionary["box2"][2] and player_y >= dictionary["box2"][1] and player_y <= dictionary["box2"][3] + dictionary["box2"][1]:
+            print("box2")
+        if player_x >= dictionary["box3"][0] and player_x <= dictionary["box3"][0] + dictionary["box3"][2] and player_y >= dictionary["box3"][1] and player_y <= dictionary["box3"][3] + dictionary["box3"][1]:
+            print("box3")
+        if player_x >= dictionary["box4"][0] and player_x <= dictionary["box4"][0] + dictionary["box4"][2] and player_y >= dictionary["box4"][1] and player_y <= dictionary["box4"][3] + dictionary["box4"][1]:
+            print("box4")
+        if player_x >= dictionary["box5"][0] and player_x <= dictionary["box5"][0] + dictionary["box5"][2] and player_y >= dictionary["box5"][1] and player_y <= dictionary["box5"][3] + dictionary["box5"][1]:
+            print("box5")
+        if player_x >= dictionary["long_wall"][0] and player_x <= dictionary["long_wall"][0] + dictionary["long_wall"][2] and player_y >= dictionary["long_wall"][1] and player_y <= dictionary["long_wall"][3] + dictionary["long_wall"][1]:
+            print("long_wall")
+        if player_x >= dictionary["long_wall2"][0] and player_x <= dictionary["long_wall2"][0] + dictionary["long_wall2"][2] and player_y >= dictionary["long_wall2"][1] and player_y <= dictionary["long_wall2"][3] + dictionary["long_wall2"][1]:
+            print("long_wall2")
+        if player_x >= dictionary["wall_pole"][0] and player_x <= dictionary["wall_pole"][0] + dictionary["wall_pole"][2] and player_y >= dictionary["wall_pole"][1] and player_y <= dictionary["wall_pole"][3] + dictionary["wall_pole"][1]:
+            print("wall_pole")
+        if player_x >= dictionary["egg_machine"][0] and player_x <= dictionary["egg_machine"][0] + dictionary["egg_machine"][2] and player_y >= dictionary["egg_machine"][1] and player_y <= dictionary["egg_machine"][3] + dictionary["egg_machine"][1]:
+            print("egg_machine")
+        if player_x >= dictionary["grill"][0] and player_x <= dictionary["grill"][0] + dictionary["grill"][2] and player_y >= dictionary["grill"][1] and player_y <= dictionary["grill"][3] + dictionary["grill"][1]:
+            print("grill")
+        if player_x >= dictionary["deep_fryer"][0] and player_x <= dictionary["deep_fryer"][0] + dictionary["deep_fryer"][2] and player_y >= dictionary["deep_fryer"][1] and player_y <= dictionary["deep_fryer"][3] + dictionary["deep_fryer"][1]:
+            print("deep_fryer")
+        if player_x >= dictionary["papa_frita"][0] and player_x <= dictionary["papa_frita"][0] + dictionary["papa_frita"][2] and player_y >= dictionary["papa_frita"][1] and player_y <= dictionary["papa_frita"][3] + dictionary["papa_frita"][1]:
+            print("papa_frita")
+        if player_x >= dictionary["papa_fritas_crudas"][0] and player_x <= dictionary["papa_fritas_crudas"][0] + dictionary["papa_fritas_crudas"][2] and player_y >= dictionary["papa_fritas_crudas"][1] and player_y <= dictionary["papa_fritas_crudas"][3] + dictionary["papa_fritas_crudas"][1]:
+            print("papa_fritas_crudas")
+
 if __name__ == '__main__':
     setup()
-
-
