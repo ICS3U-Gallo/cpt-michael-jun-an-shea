@@ -1,3 +1,4 @@
+
 import arcade
 WIDTH = 719
 HEIGHT = 982
@@ -169,54 +170,8 @@ def draw_Mcdonaldsecretrecipe():
 
 def collision():
     for obst in dictionary:
-        if player_x >= dictionary["con_table"][0] and player_x <= dictionary["con_table"][0] + dictionary["con_table"][2] and player_y >= dictionary["con_table"][1] and player_y <= dictionary["con_table"][3] + dictionary["con_table"][1]:
-            print("con_table")
-        if player_x >= dictionary["cup_tray"][0] and player_x <= dictionary["cup_tray"][0] + dictionary["cup_tray"][2] and player_y >= dictionary["cup_tray"][1] and player_y <= dictionary["cup_tray"][3] + dictionary["cup_tray"][1]:
-            print("cup_tray")
-        if player_x >= dictionary["precook_table"][0] and player_x <= dictionary["precook_table"][0] + dictionary["precook_table"][2] and player_y >= dictionary["precook_table"][1] and player_y <= 489:
-            print("precook_table")
-        if player_x >= dictionary["long_table"][0] and player_x <= dictionary["long_table"][0] + dictionary["long_table"][2] and player_y >= dictionary["long_table"][1] and player_y <= dictionary["long_table"][3] + dictionary["long_table"][1]:
-            print("long_table")
-        if player_x >= dictionary["table_sticking_out_of_long_table"][0] and player_x <= dictionary["table_sticking_out_of_long_table"][0] + dictionary["table_sticking_out_of_long_table"][2] and player_y >= dictionary["table_sticking_out_of_long_table"][1] and player_y <= dictionary["table_sticking_out_of_long_table"][3] + dictionary["table_sticking_out_of_long_table"][1]:
-            print("table_stick_out_of_long_table")
-        if player_x >= dictionary["sink"][0] and player_x <= dictionary["sink"][0] + dictionary["sink"][2] and player_y >= dictionary["sink"][1] and player_y <= dictionary["sink"][3] + dictionary["sink"][1]:
-            print("sink")
-        if player_x >= dictionary["ice_cream_machine"][0] and player_x <= dictionary["ice_cream_machine"][0] + dictionary["ice_cream_machine"][2] and player_y >= dictionary["ice_cream_machine"][1] and player_y <= dictionary["ice_cream_machine"][3] + dictionary["ice_cream_machine"][1]:
-            print("ice_cream_machine")
-        if player_x >= dictionary["ice_despenser"][0] and player_x <= dictionary["ice_despenser"][0] + dictionary["ice_despenser"][2] and player_y >= dictionary["ice_despenser"][1] and player_y <= dictionary["ice_despenser"][3] + dictionary["ice_despenser"][1]:
-            print("ice_despenser")
-        if player_x >= dictionary["ice_condiments"][0] and player_x <= dictionary["ice_condiments"][0] + dictionary["ice_condiments"][2] and player_y >= dictionary["ice_condiments"][1] and player_y <= dictionary["ice_condiments"][3] + dictionary["ice_condiments"][1]:
-            print("ice_condiments")
-        if player_x >= dictionary["bottom_left_wall"][0] and player_x <= dictionary["bottom_left_wall"][0] + dictionary["bottom_left_wall"][2] and player_y >= dictionary["bottom_left_wall"][1] and player_y <= dictionary["bottom_left_wall"][3] + dictionary["bottom_left_wall"][1]:
-            print("bottom_left_wall")
-        if player_x >= dictionary["cashier_table"][0] and player_x <= dictionary["cashier_table"][0] + dictionary["cashier_table"][2] and player_y >= dictionary["cashier_table"][1] and player_y <= dictionary["cashier_table"][3] + dictionary["cashier_table"][1]:
-            print("cashier_table")
-        if player_x >= dictionary["box1"][0] and player_x <= dictionary["box1"][0] + dictionary["box1"][2] and player_y >= dictionary["box1"][1] and player_y <= dictionary["box1"][3] + dictionary["box1"][1]:
-            print("box1")
-        if player_x >= dictionary["box2"][0] and player_x <= dictionary["box2"][0] + dictionary["box2"][2] and player_y >= dictionary["box2"][1] and player_y <= dictionary["box2"][3] + dictionary["box2"][1]:
-            print("box2")
-        if player_x >= dictionary["box3"][0] and player_x <= dictionary["box3"][0] + dictionary["box3"][2] and player_y >= dictionary["box3"][1] and player_y <= dictionary["box3"][3] + dictionary["box3"][1]:
-            print("box3")
-        if player_x >= dictionary["box4"][0] and player_x <= dictionary["box4"][0] + dictionary["box4"][2] and player_y >= dictionary["box4"][1] and player_y <= dictionary["box4"][3] + dictionary["box4"][1]:
-            print("box4")
-        if player_x >= dictionary["box5"][0] and player_x <= dictionary["box5"][0] + dictionary["box5"][2] and player_y >= dictionary["box5"][1] and player_y <= dictionary["box5"][3] + dictionary["box5"][1]:
-            print("box5")
-        if player_x >= dictionary["long_wall"][0] and player_x <= dictionary["long_wall"][0] + dictionary["long_wall"][2] and player_y >= dictionary["long_wall"][1] and player_y <= dictionary["long_wall"][3] + dictionary["long_wall"][1]:
-            print("long_wall")
-        if player_x >= dictionary["long_wall2"][0] and player_x <= dictionary["long_wall2"][0] + dictionary["long_wall2"][2] and player_y >= dictionary["long_wall2"][1] and player_y <= dictionary["long_wall2"][3] + dictionary["long_wall2"][1]:
-            print("long_wall2")
-        if player_x >= dictionary["wall_pole"][0] and player_x <= dictionary["wall_pole"][0] + dictionary["wall_pole"][2] and player_y >= dictionary["wall_pole"][1] and player_y <= dictionary["wall_pole"][3] + dictionary["wall_pole"][1]:
-            print("wall_pole")
-        if player_x >= dictionary["egg_machine"][0] and player_x <= dictionary["egg_machine"][0] + dictionary["egg_machine"][2] and player_y >= dictionary["egg_machine"][1] and player_y <= dictionary["egg_machine"][3] + dictionary["egg_machine"][1]:
-            print("egg_machine")
-        if player_x >= dictionary["grill"][0] and player_x <= dictionary["grill"][0] + dictionary["grill"][2] and player_y >= dictionary["grill"][1] and player_y <= dictionary["grill"][3] + dictionary["grill"][1]:
-            print("grill")
-        if player_x >= dictionary["deep_fryer"][0] and player_x <= dictionary["deep_fryer"][0] + dictionary["deep_fryer"][2] and player_y >= dictionary["deep_fryer"][1] and player_y <= dictionary["deep_fryer"][3] + dictionary["deep_fryer"][1]:
-            print("deep_fryer")
-        if player_x >= dictionary["papa_frita"][0] and player_x <= dictionary["papa_frita"][0] + dictionary["papa_frita"][2] and player_y >= dictionary["papa_frita"][1] and player_y <= dictionary["papa_frita"][3] + dictionary["papa_frita"][1]:
-            print("papa_frita")
-        if player_x >= dictionary["papa_fritas_crudas"][0] and player_x <= dictionary["papa_fritas_crudas"][0] + dictionary["papa_fritas_crudas"][2] and player_y >= dictionary["papa_fritas_crudas"][1] and player_y <= dictionary["papa_fritas_crudas"][3] + dictionary["papa_fritas_crudas"][1]:
-            print("papa_fritas_crudas")
+        if player_x >= dictionary[obst][0] and player_x <= dictionary[obst][0] + dictionary[obst][2] and player_y >= dictionary[obst][1] and player_y <= dictionary[obst][3] + dictionary[obst][1]:
+            return True
 
 if __name__ == '__main__':
     setup()
