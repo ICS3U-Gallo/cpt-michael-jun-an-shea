@@ -1,4 +1,3 @@
-
 import arcade
 WIDTH = 719
 HEIGHT = 982
