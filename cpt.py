@@ -1,3 +1,4 @@
+
 import arcade
 WIDTH = 719
 HEIGHT = 982
@@ -30,7 +31,6 @@ dictionary = {
     "papa_fritas_crudas": [613, 174, 105, 77],
 }
 current_screen = "menu"
-#player_location = player_x and player_y
 ball_x = 0
 player_x = 67
 player_y = 495
@@ -39,11 +39,12 @@ down_pressed = False
 right_pressed = False
 left_pressed = False
 
-def update(delta_time):
-    previous_x_input = None
-    previous_y_input = None
+previous_x_input = False
+previous_y_input = False
 
-    global player_y, player_x
+
+def update(delta_time):
+    global player_y, player_x, previous_x_input, previous_y_input
     if up_pressed:
         player_y += 2.45
         previous_y_input = 2.45
@@ -120,9 +121,10 @@ def on_key_release(key, modifiers):
 
 
 def on_mouse_press(x, y, button, modifiers):
+    global current_screen
     if current_screen == "menu":
         if x > button1[0] and x < button1[1] + button1[2] and y > button1[1] and y < button1[1] + button1[3]:
-            print("clicked")
+            current_screen  = "play"
     if current_screen == "instructions":
         if x > button2[0] and x < button2[1] + button2[2] and y > button2[1] and y < button2[1] + button2[3]:
             print("clicked2")
