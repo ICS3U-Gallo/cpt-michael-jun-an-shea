@@ -75,24 +75,29 @@ def on_draw():
         draw_play()
     elif current_screen == "Mcdonaldsecretrecipe":
         draw_Mcdonaldsecretrecipe()
+    elif current_screen == "burger_making":
+        draw_burger_making()
 
 
 
 def on_key_press(key, modifiers):
     global current_screen
     if current_screen == "menu":
-     if key == arcade.key.I:
-         current_screen = "instructions"
-     elif key == arcade.key.P:
-         current_screen = "play"
-     elif key == arcade.key.ESCAPE:
-         exit()
+        if key == arcade.key.I:
+            current_screen = "instructions"
+    elif key == arcade.key.P:
+        current_screen = "play"
+    elif key == arcade.key.ESCAPE:
+        exit()
+
     elif current_screen == "instructions":
-     if key == arcade.key.ESCAPE:
-         current_screen = "menu"
+        if key == arcade.key.ESCAPE:
+            current_screen = "menu"
     elif current_screen == "play":
-     if key == arcade.key.ESCAPE:
-         current_screen = "menu"
+        if key == arcade.key.ESCAPE:
+            current_screen = "menu"
+
+
 
     global up_pressed, down_pressed
     if current_screen == "play":
@@ -127,9 +132,13 @@ def on_mouse_press(x, y, button, modifiers):
             current_screen  = "play"
     if current_screen == "instructions":
         if x > button2[0] and x < button2[1] + button2[2] and y > button2[1] and y < button2[1] + button2[3]:
-            print("clicked2")
-
-
+            current_screen = "menu"
+    if current_screen == "play":
+        if x > 387 and x < 488 + 106 and y > 488 and y < 488 + 167:
+            current_screen = "burger_making"
+    #if current_screen == "menu":
+        #if x > 317 and x < 332 + 15 and y > 275 and y < 280 + 15:
+            #current_screen = "instructions"
 def setup():
     arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
     arcade.set_background_color(arcade.color.WHITE)
@@ -155,9 +164,9 @@ def draw_menu():
 
 
 def draw_instructions():
-    arcade.set_background_color(arcade.color.BLACK)
-    arcade.draw_text("Instructions", WIDTH/2, HEIGHT/2, arcade.color.WHITE, font_size=30, anchor_x="center")
-    arcade.draw_text("ESC to go back", WIDTH/2, HEIGHT/2-60, arcade.color.WHITE, font_size=20, anchor_x="center")
+    arcade.set_background_color(arcade.color.WHITE)
+    arcade.draw_text("Instructions", WIDTH/2, HEIGHT/2, arcade.color.BLACK, font_size=30, anchor_x="center")
+    arcade.draw_text("ESC to go back", WIDTH/2, HEIGHT/2-60, arcade.color.BLACK, font_size=20, anchor_x="center")
 
 
 def draw_play():
@@ -168,6 +177,9 @@ def draw_play():
 
 def draw_Mcdonaldsecretrecipe():
     pass
+
+def draw_burger_making():
+    arcade.set_background_color(arcade.color.BLACK)
 
 def collision():
     for obst in dictionary:
