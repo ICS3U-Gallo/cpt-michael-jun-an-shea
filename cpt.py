@@ -1,9 +1,9 @@
-
 import arcade
 WIDTH = 719
 HEIGHT = 982
 button1 = [314, 327, 50, 30]
-button2 = [290, 431, 20, 20]
+button2 = [280, 431, 9, 20]
+#dictionary is used to set cordinates for obst
 dictionary = {
     "con_table": [387, 488, 106, 167],
     "precook_table": [387, 326, 111, 163],
@@ -45,20 +45,21 @@ previous_y_input = False
 
 def update(delta_time):
     global player_y, player_x, previous_x_input, previous_y_input
+    #player movements
     if up_pressed:
-        player_y += 2.45
+        player_y += 3
         previous_y_input = 2.45
 
     elif down_pressed:
-        player_y -= 2.45
-        previous_y_input = -2.45
+        player_y -= 3
+        previous_y_input = -3
 
     if right_pressed:
-        player_x += 2.45
-        previous_x_input = 2.45
+        player_x += 3
+        previous_x_input = 3
     elif left_pressed:
-        player_x -= 2.45
-        previous_x_input = -2.45
+        player_x -= 3
+        previous_x_input = -3
 
     if collision():
         player_x -= previous_x_input
@@ -85,19 +86,19 @@ def on_key_press(key, modifiers):
     if current_screen == "menu":
         if key == arcade.key.I:
             current_screen = "instructions"
-    elif key == arcade.key.P:
-        current_screen = "play"
-    elif key == arcade.key.ESCAPE:
-        exit()
-
+        elif key == arcade.key.P:
+            current_screen = "play"
+        elif key == arcade.key.ESCAPE:
+            exit()
     elif current_screen == "instructions":
         if key == arcade.key.ESCAPE:
             current_screen = "menu"
     elif current_screen == "play":
         if key == arcade.key.ESCAPE:
             current_screen = "menu"
-
-
+    elif current_screen == "burger_making":
+        if key == arcade.key.ESCAPE:
+            current_screen = "play"
 
     global up_pressed, down_pressed
     if current_screen == "play":
@@ -127,6 +128,7 @@ def on_key_release(key, modifiers):
 
 def on_mouse_press(x, y, button, modifiers):
     global current_screen
+    #these are for the functionable buttons you can press on in certain screens
     if current_screen == "menu":
         if x > button1[0] and x < button1[1] + button1[2] and y > button1[1] and y < button1[1] + button1[3]:
             current_screen  = "play"
@@ -136,9 +138,7 @@ def on_mouse_press(x, y, button, modifiers):
     if current_screen == "play":
         if x > 387 and x < 488 + 106 and y > 488 and y < 488 + 167:
             current_screen = "burger_making"
-    #if current_screen == "menu":
-        #if x > 317 and x < 332 + 15 and y > 275 and y < 280 + 15:
-            #current_screen = "instructions"
+
 def setup():
     arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
     arcade.set_background_color(arcade.color.WHITE)
@@ -155,7 +155,7 @@ def setup():
 
 
 def draw_menu():
-    image = arcade.load_texture("/home/robuntu/shea/classwork/computersciencelogo.png")
+    image = arcade.load_texture("C:/Users/micha/Downloads/computersciencelogo.png")
     arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
     arcade.draw_text("Play", WIDTH/2-45, HEIGHT/3,
                   arcade.color.WHITE_SMOKE, font_size=35)
@@ -166,11 +166,11 @@ def draw_menu():
 def draw_instructions():
     arcade.set_background_color(arcade.color.WHITE)
     arcade.draw_text("Instructions", WIDTH/2, HEIGHT/2, arcade.color.BLACK, font_size=30, anchor_x="center")
-    arcade.draw_text("ESC to go back", WIDTH/2, HEIGHT/2-60, arcade.color.BLACK, font_size=20, anchor_x="center")
+    arcade.draw_text("click to go back", WIDTH/2, HEIGHT/2-60, arcade.color.BLACK, font_size=20, anchor_x="center")
 
 
 def draw_play():
-    image = arcade.load_texture("/home/robuntu/shea/classwork/computerscience (2).png")
+    image = arcade.load_texture("C:/Users/micha/Downloads/computerscience2.png")
     arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
     arcade.draw_circle_filled(player_x, player_y, 25, arcade.color.BLUE)
     collision()
@@ -179,7 +179,9 @@ def draw_Mcdonaldsecretrecipe():
     pass
 
 def draw_burger_making():
-    arcade.set_background_color(arcade.color.BLACK)
+    #click on the con_table located on the oppisite side of the grill. the grill is located on the left of the deep fryer
+    image = arcade.load_texture("C:/Users/micha/Downloads/con_table.png")
+    arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
 
 def collision():
     for obst in dictionary:
