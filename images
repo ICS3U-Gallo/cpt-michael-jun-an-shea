@@ -1,1 +1,3 @@
-
+image = arcade.load_texture("C:/Users/micha/Downloads/computersciencelogo.png")
+image = arcade.load_texture("C:/Users/micha/Downloads/computerscience2.png")
+image = arcade.load_texture("C:/Users/micha/Downloads/con_table.png")
