@@ -155,7 +155,7 @@ def setup():
 
 
 def draw_menu():
-    image = arcade.load_texture("images/computersciencelogo.png")
+    image = arcade.load_texture("michaeljunan/images/computersciencelogo.png")
     arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
     arcade.draw_text("Play", WIDTH/2-45, HEIGHT/3,
                   arcade.color.WHITE_SMOKE, font_size=35)
@@ -170,7 +170,7 @@ def draw_instructions():
 
 
 def draw_play():
-    image = arcade.load_texture("images/computerscience2.png")
+    image = arcade.load_texture("michaeljunan/images/computerscience2.png")
     arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
     arcade.draw_circle_filled(player_x, player_y, 25, arcade.color.BLUE)
     collision()
@@ -180,7 +180,7 @@ def draw_Mcdonaldsecretrecipe():
 
 def draw_burger_making():
     #click on the con_table located on the oppisite side of the grill. the grill is located on the left of the deep fryer
-    image = arcade.load_texture("images/con_table.png")
+    image = arcade.load_texture("michaeljunan/images/con_table.png")
     arcade.draw_texture_rectangle(WIDTH//2,HEIGHT//2, WIDTH, HEIGHT, image)
 
 def collision():
